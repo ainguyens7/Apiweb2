@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::get('/users', function () {
     return view('users');
 });
+Route::resource('admin/users', 'UserController', [
+        'middleware' => 'auth'
+]);
 Route::group(['prefix' => 'api'], function () {
     Route::resource('users', 'UserController');
 });
